@@ -1,0 +1,20 @@
+current directory: /Users/kajiokashunma/yakiniku-review-app/vendor/bundle/ruby/3.2.0/gems/debug-1.11.0/ext/debug
+/Users/kajiokashunma/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/kajiokashunma/yakiniku-review-app/vendor/bundle/ruby/3.2.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250716-78339-6snhvz sitelibdir\=./.gem.20250716-78339-6snhvz clean
+
+current directory: /Users/kajiokashunma/yakiniku-review-app/vendor/bundle/ruby/3.2.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250716-78339-6snhvz sitelibdir\=./.gem.20250716-78339-6snhvz
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/kajiokashunma/yakiniku-review-app/vendor/bundle/ruby/3.2.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250716-78339-6snhvz sitelibdir\=./.gem.20250716-78339-6snhvz install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20250716-78339-6snhvz/debug
+
+current directory: /Users/kajiokashunma/yakiniku-review-app/vendor/bundle/ruby/3.2.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250716-78339-6snhvz sitelibdir\=./.gem.20250716-78339-6snhvz clean
