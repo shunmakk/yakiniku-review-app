@@ -17,6 +17,15 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'bootstrap', '~> 5.3'
+gem 'jquery-rails'
+gem 'chartkick'  # グラフ表示用
+gem 'groupdate'   # 時系列データ用
+gem 'image_processing' # 画像アップロード用
+gem 'dartsass-rails'
+gem 'propshaft'
+gem 'cssbundling-rails'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -60,4 +69,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+end
+
+# 開発環境用
+group :development do
+  gem 'pry-rails'
 end

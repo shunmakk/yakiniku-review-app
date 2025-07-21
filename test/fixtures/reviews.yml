@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  overall_rating: 1
+  content: MyText
+  visited_at: 2025-07-16 22:22:07
+
+two:
+  customer_name: MyString
+  overall_rating: 1
+  content: MyText
+  visited_at: 2025-07-16 22:22:07

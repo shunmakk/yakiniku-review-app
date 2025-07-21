@@ -1,9 +1,13 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# メニューは仮置き
+MenuItem.create!([
+  { name: 'カルビ', category: 'yakiniku', price: 780, active: true },
+  { name: 'ロース', category: 'yakiniku', price: 880, active: true },
+  { name: 'ハラミ', category: 'yakiniku', price: 980, active: true },
+  { name: 'タン塩', category: 'yakiniku', price: 1280, active: true },
+  { name: 'キムチ', category: 'side_dish', price: 380, active: true },
+  { name: 'ナムル', category: 'side_dish', price: 380, active: true },
+  { name: 'ビール', category: 'drink', price: 580, active: true },
+  { name: '烏龍茶', category: 'drink', price: 280, active: true }
+])
+
+puts "Created #{MenuItem.count} menu items"

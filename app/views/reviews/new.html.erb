@@ -1,0 +1,23 @@
+<!-- app/views/reviews/new.html.erb -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">焼肉店○○ 口コミ投稿</h1>
+  
+  <%= form_with model: @review, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :customer_name, "お名前（ニックネーム可）" %>
+      <%= f.text_field :customer_name, class: "form-control" %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :overall_rating, "総合評価" %>
+      <%= f.select :overall_rating, options_for_select(1..5), {}, class: "form-control" %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :content, "コメント" %>
+      <%= f.text_area :content, rows: 4, class: "form-control" %>
+    </div>
+    
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
+  <% end %>
+</div>
