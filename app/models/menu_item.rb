@@ -2,12 +2,7 @@ class MenuItem < ApplicationRecord
     has_many :review_menu_ratings
     has_many :reviews, through: :review_menu_ratings
 
-    enum category: {
-    yakiniku: 0,
-    side_dish: 1,
-    drink: 2,
-    dessert: 3
-   }
+    enum :category, { yakiniku: 0, side_dish: 1, drink: 2, dessert: 3 }
 
    scope :active, -> { where(active: true) }
    scope :by_category, ->(category) { where(category: category) }
