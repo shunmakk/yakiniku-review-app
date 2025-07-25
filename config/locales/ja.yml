@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      review: レビュー
+      menu_item: メニュー
+    attributes:
+      review:
+        customer_name: お名前
+        overall_rating: 総合評価
+        content: コメント
+        visited_at: 来店日
+      menu_item:
+        name: メニュー名
+        category: カテゴリ
+        price: 価格

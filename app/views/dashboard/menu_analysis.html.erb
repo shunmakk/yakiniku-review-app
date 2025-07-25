@@ -1,0 +1,61 @@
+
+<div class="container mt-4">
+  <h1 class="mb-4">メニュー別分析</h1>
+  
+  <%= link_to "← ダッシュボードに戻る", dashboard_index_path, class: "btn btn-secondary mb-3" %>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">カテゴリ別平均評価</h5>
+        </div>
+        <div class="card-body">
+          <%= column_chart @category_ratings.transform_keys { |k|
+            MenuItem.new(category: k).category_name
+          }, height: "300px", colors: ["#FF6B6B"] %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mt-4">
+    <% MenuItem.categories.keys.each do |category| %>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header bg-<%= category_color(category) %> text-white">
+            <h5 class="mb-0"><%= MenuItem.new(category: category).category_name %></h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>メニュー名</th>
+                  <th>価格</th>
+                  <th>平均評価</th>
+                  <th>レビュー数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @menu_items.where(category: category).each do |item| %>
+                  <tr>
+                    <td><%= item.name %></td>
+                    <td>¥<%= number_with_delimiter(item.price) %></td>
+                    <td>
+                      <% if item.average_rating > 0 %>
+                        <span class="text-warning">★<%= item.average_rating %></span>
+                      <% else %>
+                        <span class="text-muted">未評価</span>
+                      <% end %>
+                    </td>
+                    <td><%= item.rating_count %>件</td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

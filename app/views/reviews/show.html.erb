@@ -1,2 +1,62 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+          <h4 class="mb-0">
+            <%= @review.customer_name %>さんのレビュー
+            <span class="float-end text-warning">
+              <% @review.overall_rating.times do %>★<% end %>
+            </span>
+          </h4>
+        </div>
+        
+        <div class="card-body">
+          <p class="text-muted">
+            <i class="fas fa-calendar"></i> 
+            <%= @review.visited_at.strftime("%Y年%m月%d日 来店") %>
+          </p>
+          
+          <div class="mb-4">
+            <h5>コメント</h5>
+            <p class="lead"><%= @review.content %></p>
+          </div>
+          
+          <% if @review.review_menu_ratings.where.not(rating: nil).any? %>
+            <div class="mb-4">
+              <h5>メニュー別評価</h5>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>メニュー</th>
+                    <th>カテゴリ</th>
+                    <th>評価</th>
+                    <th>コメント</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @review.review_menu_ratings.where.not(rating: nil).each do |rating| %>
+                    <tr>
+                      <td><%= rating.menu_item.name %></td>
+                      <td><%= rating.menu_item.category_name %></td>
+                      <td class="text-warning">
+                        <% rating.rating.times do %>★<% end %>
+                      </td>
+                      <td><%= rating.comment || "-" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% end %>
+          
+          <div class="text-center">
+            <%= link_to "レビュー一覧に戻る", reviews_path, class: "btn btn-secondary" %>
+            <%= link_to "新しいレビューを投稿", new_review_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

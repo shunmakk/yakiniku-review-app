@@ -1,5 +1,37 @@
 @import "bootstrap";
 
-.rating {
-  color: #ffa500;
+.rating-input {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  label {
+    cursor: pointer;
+    margin: 0 5px;
+  }
+
+  .star {
+    font-size: 2rem;
+    color: #ddd;
+    transition: color 0.2s;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  input[type="radio"]:checked ~ label .star,
+  label:hover .star,
+  label:hover ~ label .star {
+    color: #ffa500;
+  }
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.table {
+  margin-bottom: 0;
 }

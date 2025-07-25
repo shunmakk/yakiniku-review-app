@@ -1,2 +1,98 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+
+<div class="container-fluid mt-4">
+  <h1 class="mb-4">口コミ分析ダッシュボード</h1>
+  
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">総レビュー数</h5>
+          <h2 class="text-primary"><%= @total_reviews %></h2>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">平均評価</h5>
+          <h2 class="text-warning">
+            <% @average_rating.to_i.times do %>★<% end %>
+            <%= @average_rating %>
+          </h2>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">今月のレビュー</h5>
+          <h2 class="text-success"><%= Review.this_month.count %></h2>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">高評価率</h5>
+          <h2 class="text-info">
+            <%= (Review.high_rated.count.to_f / Review.count * 100).round(1) %>%
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    
+   <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">評価分布</h5>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <% (1..5).reverse_each do |rating| %>
+              <tr>
+                <td>★<%= rating %></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar bg-warning" 
+                         style="width: <%= (Review.where(overall_rating: rating).count.to_f / Review.count * 100).round %>%">
+                      <%= Review.where(overall_rating: rating).count %>件
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+             </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">最新レビュー</h5>
+        </div>
+        <div class="card-body">
+          <% @recent_reviews.each do |review| %>
+            <div class="mb-3 pb-3 border-bottom">
+              <div class="d-flex justify-content-between">
+                <strong><%= review.customer_name %></strong>
+                <span class="text-warning">
+                  <% review.overall_rating.times do %>★<% end %>
+                </span>
+              </div>
+              <p class="mb-1 text-truncate"><%= review.content %></p>
+              <small class="text-muted">
+                <%= review.visited_at.strftime("%Y年%m月%d日") %>
+              </small>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

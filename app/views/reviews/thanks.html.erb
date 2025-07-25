@@ -1,0 +1,78 @@
+<!-- app/views/reviews/thanks.html.erb -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <div class="card shadow">
+        <div class="card-body py-5">
+          <div class="mb-4">
+            <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+          </div>
+          
+          <h1 class="mb-4">レビューありがとうございました！</h1>
+          
+          <p class="lead mb-4">
+            お客様の貴重なご意見をいただき、誠にありがとうございます。<br>
+            いただいたレビューは、サービス向上の参考にさせていただきます。
+          </p>
+          
+          <div class="mb-4">
+            <p class="text-muted">
+              またのご来店を心よりお待ちしております。<br>
+              美味しい焼肉をご用意してお待ちしています！
+            </p>
+          </div>
+          
+          <div class="d-grid gap-2 col-md-6 mx-auto">
+            <%= link_to "新しいレビューを投稿", new_review_path, class: "btn btn-primary btn-lg" %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="mt-5">
+        <h3 class="mb-3">本日のおすすめ</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5>特選カルビ</h5>
+                <p class="text-muted">柔らかな食感と濃厚な味わい</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5>厚切りタン塩</h5>
+                <p class="text-muted">ジューシーで食べ応え抜群</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5>石焼ビビンバ</h5>
+                <p class="text-muted">アツアツの石焼で香ばしく</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    border: none;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .btn {
+    padding: 10px 30px;
+  }
+</style>

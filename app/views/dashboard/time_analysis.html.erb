@@ -1,0 +1,47 @@
+
+<div class="container mt-4">
+  <h1 class="mb-4">時間帯別分析</h1>
+  
+  <%= link_to "← ダッシュボードに戻る", dashboard_index_path, class: "btn btn-secondary mb-3" %>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">時間帯別来店数</h5>
+        </div>
+        <div class="card-body">
+          <%= column_chart @hourly_distribution.transform_keys { |k| "#{k}時" }, 
+              height: "300px", colors: ["#4ECDC4"] %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">曜日別来店数</h5>
+        </div>
+        <div class="card-body">
+          <%= column_chart @weekly_distribution.transform_keys { |k|
+            %w[日 月 火 水 木 金 土][k]
+          }, height: "300px", colors: ["#F7DC6F"] %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">月別平均評価の推移</h5>
+        </div>
+        <div class="card-body">
+          <%= line_chart @monthly_trend, height: "300px", 
+              min: 1, max: 5, colors: ["#E74C3C"] %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
